@@ -20,18 +20,8 @@
 			window: win2
 		});
 
-		var win3 = Titanium.UI.createWindow({
-			title: 'Check in'
-		});
-
-		ch.check = Titanium.UI.createTab({
-			title:'Check',
-			window: win3
-		});
-
 		tabGroup.addTab(ch.bares);
 		tabGroup.addTab(ch.mapa);
-		tabGroup.addTab(ch.check);
 
 		return tabGroup;
 	}

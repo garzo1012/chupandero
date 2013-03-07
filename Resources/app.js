@@ -1,6 +1,6 @@
 Titanium.UI.setBackgroundColor('white');
 
-var ch = {};
+var ch = {}, ventanagral;
 
 Titanium.include(
 	'ui/main.js',

@@ -28,6 +28,7 @@
 			var titulo = _e.row.children[7].text;
 			
 			activeTab.open(ch.ui.detailBar(direccion, desc, tel, promo, logo, titulo,latitude,longitude));
+
 		});
 
 		var url = "http://chupandero.com/bars.json";
