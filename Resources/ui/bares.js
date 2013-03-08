@@ -28,6 +28,7 @@
 			var titulo = _e.row.children[7].text;
 			
 			activeTab.open(ch.ui.detailBar(direccion, desc, tel, promo, logo, titulo,latitude,longitude));
+			Titanium.App.fireEvent('hideTabGroup');
 
 		});
 
@@ -111,24 +112,17 @@
 		return win;
 	}
 
-	//detalle bar
-	ch.ui.detailBar = function(dir, desc, tel, promo, logo, titulo, lat, long){
+	//mapa del bar
 
+	ch.ui.mapaBar = function(lat,long,titulo,promo){
 		var win = Titanium.UI.createWindow({
-			title: titulo,
-			layout: 'vertical'
+			title: 'Mapa'
 		});
 
-		var imglogo = Titanium.UI.createImageView({
-			image: logo,
-			height: 100,
-			width:100,
-			top: 10,
-			borderRadius: 6
+		var b = Titanium.UI.createButton({
+			title:'Cerrar',
+			style: Titanium.UI.iPhone.SystemButtonStyle.PLAIN
 		});
-
-		var direccion = ch.ui.label(dir);
-		direccion.setVisible(true);
 
 		var anotacion = Titanium.Map.createAnnotation({
 			latitude: lat,
@@ -149,9 +143,49 @@
 			annotations: [anotacion]
 		});
 
+		win.setLeftNavButton(b);
+		win.add(mapview);
+
+		b.addEventListener('click',function(){
+			win.close();
+		});
+
+		return win;
+
+	}
+
+	//detalle bar
+	ch.ui.detailBar = function(dir, desc, tel, promo, logo, titulo, lat, long){
+
+		var win = Titanium.UI.createWindow({
+			title: titulo,
+			layout: 'vertical'
+		});
+
+		var imglogo = Titanium.UI.createImageView({
+			image: logo,
+			height: 100,
+			width:100,
+			top: 10,
+			borderRadius: 6
+		});
+
+		var direccion = ch.ui.label(dir);
+		direccion.setVisible(true);
+
+		var mapa = Titanium.UI.createButton({
+			title:'Mapa'
+		});
+
+		mapa.addEventListener('click', function(){
+			var win = ch.ui.mapaBar(lat,long,titulo,promo);
+			win.open({modal:true});
+		})
+
 		win.add(imglogo);
 		win.add(direccion);
-		win.add(mapview);
+		win.rightNavButton = mapa;
+		//win.add(mapview);
 
 		return win;
 	}
