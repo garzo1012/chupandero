@@ -40,8 +40,8 @@
 		    onload: function() {
 				
 			json = JSON.parse(this.responseText);
-			for (i = 0; i < json.length; i++) {
-			    bar = json[i];
+			for (i = 0; i < json.bar.length; i++) {
+			    bar = json.bar[i];
 			    row = Ti.UI.createTableViewRow({
 			    	hasChild: true,
 			        height:'60dp'
