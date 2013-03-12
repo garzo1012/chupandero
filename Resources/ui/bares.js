@@ -34,7 +34,7 @@
 
 		var url = "http://chupandero.com/bars.json";
 		var tableData = [];
-		var json, bar, i, row, nameLabel, nickLabel;
+		var json, bar, i, row, nameLabel, nickLabel, imageBar;
 		 
 		var xhr = Ti.Network.createHTTPClient({
 		    onload: function() {
@@ -42,6 +42,10 @@
 			json = JSON.parse(this.responseText);
 			for (i = 0; i < json.bar.length; i++) {
 			    bar = json.bar[i];
+<<<<<<< HEAD
+=======
+			    
+>>>>>>> af84cfbf6ea1d5c720ff1d26b20d893887eb6da0
 			    row = Ti.UI.createTableViewRow({
 			    	hasChild: true,
 			        height:'60dp'
@@ -54,14 +58,14 @@
 				    fontWeight:'bold'
 					},
 					height:'auto',
-					left:'10dp',
+					left:'80dp',
 					top:'5dp',
 					color:'#000',
 					touchEnabled:false
 			    });
-
+				//alert(json.tags[i].tag);
 			    nickLabel = Ti.UI.createLabel({
-					text:bar.horary,
+					text:json.tags[i].tag[i],
 					font:{
 					    fontSize:'12dp'
 						},
@@ -72,6 +76,14 @@
 					touchEnabled:false
 			    });
 		 
+				imageBar = Ti.UI.createImageView({
+					image: bar.logo,
+					width: 50,
+					height: 50,
+					left: 10,
+					top: 5
+				}); 
+				
 			    row.add(ch.ui.label(bar.address));
 			    row.add(ch.ui.label(bar.description));
 			    row.add(ch.ui.label(bar.phone));
@@ -80,7 +92,7 @@
 			    row.add(ch.ui.label(bar.latitude));
 			    row.add(ch.ui.label(bar.longitude));
 			    row.add(nameLabel);
-			    row.add(nickLabel);
+			    row.add(imageBar);
 			    tableData.push(row);
 		        }
 				
@@ -136,7 +148,7 @@
 
 		var mapview = Titanium.Map.createView({
 			mapType: Titanium.Map.STANDARD_TYPE,
-			region: {latitude:lat, longitude:long, latitudeDelta:0.01, longitudeDelta:0.01},
+			region: {latitude:lat, longitude:long, latitudeDelta:0.0015, longitudeDelta:0.0015},
 			animate: true,
 			regionFit: true,
 			userLocation: true,
