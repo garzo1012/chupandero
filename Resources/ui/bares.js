@@ -152,6 +152,8 @@
 			annotations: [anotacion]
 		});
 
+		mapview.selectAnnotation(anotacion);
+
 		win.setLeftNavButton(b);
 		win.add(mapview);
 

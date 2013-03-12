@@ -45,58 +45,13 @@
 		xhr.open("GET", url);
 		xhr.send();
 
+
+
 		var win = Titanium.UI.createWindow({
 				title: 'Mapa',
 				layout: 'vertical',
 				backgroundColor:'#fff'
 			});
-	
-	
-		/*if(Titanium.Geolocation.locationServicesEnabled === false){
-
-			Titanium.UI.createAlertDialog({
-				title:'GPS desactivado',
-				message:'El servicio de gps esta desactivado'
-			}).show();
-
-			win.add(Titanium.UI.createLabel({
-				text:'error al cargar el mapa gps desactivado'
-			}));
-
-		}else{
-
-			Titanium.Geolocation.preferredProvider = 'gps';
-			Titanium.Geolocation.purpose = 'GPS demo';
-			Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_BEST;
-			Titanium.Geolocation.distanceFilter = 10;
-
-			win.addEventListener('open',function(){
-
-				Titanium.Geolocation.getCurrentPosition(function(e){
-
-					if(!e.success || e.error){
-						win.add(Titanium.UI.createLabel({
-							text:'error en geolocalizacion'
-						}));
-						return;
-					}
-
-					
-					var mapview = Titanium.Map.createView({
-						mapType: Titanium.Map.STANDARD_TYPE,
-						region: {latitude:e.coords.latitude, longitude:e.coords.longitude, latitudeDelta:0.1, longitudeDelta:0.1},
-						animate: true,
-						regionFit: true,
-						userLocation: true
-					});
-		
-					win.add(mapview);
-
-				});
-
-			});
-
-		}*/
 
 		win.add(mapview);
 
