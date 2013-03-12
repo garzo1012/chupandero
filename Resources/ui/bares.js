@@ -40,8 +40,9 @@
 		    onload: function() {
 				
 			json = JSON.parse(this.responseText);
-			for (i = 0; i < json.length; i++) {
-			    bar = json[i];
+			for (i = 0; i < json.bar.length; i++) {
+			    bar = json.bar[i];
+			    
 			    row = Ti.UI.createTableViewRow({
 			    	hasChild: true,
 			        height:'60dp'
@@ -59,9 +60,9 @@
 					color:'#000',
 					touchEnabled:false
 			    });
-/*
+				//alert(json.tags[i].tag);
 			    nickLabel = Ti.UI.createLabel({
-					text:bar.horary,
+					text:json.tags[i].tag[i],
 					font:{
 					    fontSize:'12dp'
 						},
@@ -71,7 +72,7 @@
 					color:'#000',
 					touchEnabled:false
 			    });
-		 */
+		 
 				imageBar = Ti.UI.createImageView({
 					image: bar.logo,
 					width: 50,

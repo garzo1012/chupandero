@@ -17,8 +17,8 @@
 		    onload: function() {
 				
 				json = JSON.parse(this.responseText);
-				for (i = 0; i < json.length; i++) {
-					bar = json[i];
+				for (i = 0; i < json.bar.length; i++) {
+					bar = json.bar[i];
 					var anotacion = Titanium.Map.createAnnotation({
 						latitude: bar.latitude,
 						longitude: bar.longitude,
